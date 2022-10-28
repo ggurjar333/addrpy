@@ -1,7 +1,7 @@
 from createAddr import addr_singleton
 from rejected_logger import Logger
 import re
-
+from city_fixer import detect_city
 class addrpattern1():
     ''' addrpattern1 follows the pattern : e.g. street address, city, state, zipcode
      for example, 1020 Wall Street, New York, New York, 12345
@@ -97,17 +97,15 @@ class addrpattern3():
 #                     return addr_dict
 
 # 26102022
+
     def fixing_addr(self):
         addrvalue = re.sub('\\s+', ' ', self._addrString)
         addr_list = addrvalue.split(',')
-        # print(addr_list[2])
-        # print(type(addr_list[2]))
-
         try:
             arr_addr = []
             addr_list[2] = addr_list[2].lstrip()
             addr_list[2] = addr_list[2].rstrip()
-            print(addr_list[2])
+            # print(addr_list[2])
             for record in addr_list[2].split(' '):
                 record = record.split(' ')
                 # print('--------------------')
@@ -115,23 +113,27 @@ class addrpattern3():
                 arr_addr.append(record)
             zipcode = arr_addr[1]
             statename = arr_addr[0]
-            print(zipcode, statename)
-            if zipcode.isdigit():
-                print('Detecting zipcode as digit: ', zipcode)
-                if addr_list[1].isalpha():
-                    if addr_list[0].isalnum():
+            # print(zipcode[0], statename[0])
+            if zipcode[0].isnumeric():
+                print('Detecting zipcode as digit: ', zipcode[0])
+                print('City: {}'.format(addr_list[1]))
+                if addr_list[1].isalpha() == True:
+                    print('In the loop of city:'.format(addr_list[1]))
+                    if addr_list[0].isalnum() == True:
+                        print('Street Address: '.format(addr_list[0]))
                         addr_dict = {
                             'street_address': addr_list[0].strip(),
                             'city': addr_list[1].strip(),
-                            'zipcode': zipcode.strip(),
-                            'statename': statename.strip()
+                            'zipcode': zipcode[0].strip(),
+                            'statename': statename[0].strip()
                             }
                         print(addr_dict)
                         return addr_dict
         except:
-            for record in addr_list[2]:
-                # record = record.split(' ')
-                print(record)
+            print('IN the except block.')
+        #     for record in addr_list[2]:
+        #         # record = record.split(' ')
+        #         print(record)
 
             # if not addr_list[2].isdigit():
             #     ''' Iterate every row of the column values and split the values by a space. '''
