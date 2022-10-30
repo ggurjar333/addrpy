@@ -1,7 +1,7 @@
 from createAddr import addr_singleton
 from rejected_logger import Logger
 import re
-from city_fixer import city_fixer
+from cityFixer import cityFixer
 class addrpattern1():
     ''' addrpattern1 follows the pattern : e.g. street address, city, state, zipcode
      for example, 1020 Wall Street, New York, New York, 12345
@@ -117,17 +117,14 @@ class addrpattern3():
             if zipcode[0].isnumeric():
                 print('Detecting zipcode as digit: ', zipcode[0])
                 print('City: {}'.format(addr_list[1]))
-                if city_fixer(city=addr_list[1]):
-                    city = city_fixer(city=addr_list[1])
+                if cityFixer(city=addr_list[1]):
+                    city = cityFixer(city=addr_list[1])
                     print('from check_city --> City: {}'.format(city))
-                    # print()
-                # if addr_list[1].isalpha() == True:
-                #     print('In the loop of city:'.format(addr_list[1]))
                     if addr_list[0].isalnum() == True:
                         print('Street Address: '.format(addr_list[0]))
                         addr_dict = {
                             'street_address': addr_list[0].strip(),
-                            'city': addr_list[1].strip(),
+                            'city': city.strip(),
                             'zipcode': zipcode[0].strip(),
                             'statename': statename[0].strip()
                             }

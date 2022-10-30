@@ -33,7 +33,7 @@ class city:
         self.__str__ = self._city
 
 
-class city_fixer(city):
+class cityFixer(city):
     def __init__(self, **kwargs):
         city.__init__(self)
         self._city = check_city(kwargs['city'])
@@ -41,5 +41,5 @@ class city_fixer(city):
     def __str__(self):
         return str(self._city)
 
-# x = city_fixer(city='abc abc 123')
+# x = cityFixer(city='abc abc 123')
 # print(x)
