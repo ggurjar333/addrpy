@@ -1,9 +1,9 @@
 import camelot
 import pandas as pd
-from addrPatterns import addrpattern1, addrpattern2, addrpattern3, addrpattern4
+
 from patternFactory import addrpatternfactory
 from patternStore import addrStore
-import requests
+
 
 # Storing pdf contents to a Dataframe - Stream
 def IDOALicenseeList_stream_pdf_to_Table(path_or_url):
@@ -71,4 +71,4 @@ df['zipcode'] = zipcode
 # df = df[df['zipcode'] != df['zipcode'].str.isnumeric()]
 # if df['zipcode'] != ''
 print(df)
-# df.to_csv('new_city_2610.csv', index=False)
+df.to_csv('new_city_3010.csv', index=False)
