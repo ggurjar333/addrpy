@@ -1,4 +1,4 @@
-
+from common import has_numbers
 def detect_city(city_string):
     try:
         split_val = city_string.split(' ')
@@ -20,11 +20,6 @@ def check_city(city_string):
         return print('city name string characters and digits. -- {}'.format(city_string))
     else:
         return print('city name string characters and digits. -- {}'.format(city_string))
-
-
-def has_numbers(inputString):
-    return any(char.isdigit() for char in inputString)
-
 
 class city:
     """ The city design object pattern """
