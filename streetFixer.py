@@ -10,6 +10,8 @@ def check_street_address(street_address):
                 val_list.append(val)
             str_list.append("".join(val_list))
         return " ".join(str_list).strip()
+    except:
+        print('street_address contains invalid characters.')
 
 class streetAddr:
     _streetAddr = {}
