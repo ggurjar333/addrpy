@@ -1,5 +1,6 @@
 from common import has_numbers
 
+
 def check_street_address(street_address):
     try:
         split_val = street_address.split(' ')
@@ -13,10 +14,13 @@ def check_street_address(street_address):
     except:
         print('street_address contains invalid characters.')
 
+
 class streetAddr:
     _streetAddr = {}
+
     def __init__(self):
         self.__str__ = self._streetAddr
+
 
 class streetAddress(streetAddr):
     def __init__(self, **kwargs):
