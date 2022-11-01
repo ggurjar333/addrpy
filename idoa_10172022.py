@@ -56,19 +56,26 @@ for i in df['address']:
     except:
         zipcode.append('')
 
-# pre_processed_record = preprocess_addr(df[1][2])
-# print(pre_processed_record)
-# print(pre_processed_record['city'])
-# print(pre_processed_record['zipcode'])
-# print(pre_processed_record['street_address'])
 df['city'] = city
 df['state'] = state
 df['zipcode'] = zipcode
-# df['state'] = df['state'].astype(str).replace(r'', "IL", regex=True)
-# df['zipcode'] = df['zipcode'].str.lstrip('IL ')
-# df['zipcode'] = df['zipcode'].astype(str).replace(r'', "", regex=True)
 
-# df = df[df['zipcode'] != df['zipcode'].str.isnumeric()]
-# if df['zipcode'] != ''
 print(df)
-df.to_csv('new_city_3010.csv', index=False)
+df.to_csv('upto_addr4.csv', index=False)
+
+# non_city_df = df[(df['city'] == 'IL') & (df['city'] == '')]
+# non_city_df.to_csv('non_city_df_v2.csv', index=False)
+# rejected_df = df[df['city'].isnull()]
+
+# rejected_df.to_csv('rejected_df.csv', index=False)
+# cleaned_df = df[df[rejected_df]]
+# cleaned_df.to_csv('cleaned_df.csv', index=False)
+
+
+# chunk_first_set = df[df['state'] != 'IL']
+# first_set = first_set[first_set['city'] != 'IL']
+# first_set.to_csv('clean_first_set_v3.csv', index=False)
+#
+# second_set = df[df['state'] != 'IL']
+# second_set.to_csv('second_set_v2.csv', index=False)
+# df.to_csv('new_city_3110.csv', index=False)

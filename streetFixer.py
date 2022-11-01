@@ -7,8 +7,9 @@ def check_street_address(street_address):
         str_list = []
         for val in split_val:
             val_list = []
-            if val.isalnum() or val.isalpha() or val.isdigit():
-                val_list.append(val)
+            val_list.append(val)
+            # if val.isalnum() or val.isalpha() or val.isdigit():
+            #     val_list.append(val)
             str_list.append("".join(val_list))
         return " ".join(str_list).strip()
     except:
