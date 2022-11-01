@@ -2,6 +2,7 @@ from createAddr import addr_singleton
 from rejected_logger import Logger
 import re
 from cityFixer import check_city
+from stateFixer import check_state
 from streetFixer import check_street_address
 class addrpattern1():
     ''' addrpattern1 follows the pattern : e.g. street address, city, state, zipcode
@@ -20,25 +21,35 @@ class addrpattern1():
         if addr_list[3][addr_list[3].isnumeric()]:
             zipcode = addr_singleton(zipcode = addr_list[3].strip())
             # print('Detecting Zipcode: ',addr_list[3])
-            if addr_list[2][addr_list[2].isalpha()]:
-                statename = addr_singleton(statename = addr_list[2].strip())
+            if check_state(state=addr_list[2]):
+                state = check_state(state=addr_list[2])
+            # if addr_list[2][addr_list[2].isalpha()]:
+            #     statename = addr_singleton(statename = addr_list[2].strip())
+
                 # if statename.statename != 'IL':
                 #     critical_log_object = Logger('parsing_logs.log')
                 #     critical_log_object.critical('CRITICAL', '[{0}] - Statename is not valid - [ {1} ]'.format(addrvalue, addr_list[2]))
                 # print('Detecting Statename:', addr_list[2])
-                if addr_list[1][addr_list[1].isalpha()]:
-                    cityname = addr_singleton(cityname = addr_list[1].strip())
-                    if check_city(city_string=addr_list[1]):
+                # if addr_list[1][addr_list[1].isalpha()]:
+                #     cityname = addr_singleton(cityname = addr_list[1].strip())
 
+                if check_city(city_string=addr_list[1]):
+                    cityname = check_city(city_string=addr_list[1])
+                    print('from check city --> City: {}'.format(cityname))
+                    if check_street_address(street_address=addr_list[0]):
+                        street_address = check_street_address(street_address=addr_list[0])
+                        print('from check street address -->street address: {}'.format(street_address))
+                        addr_dict = {'street_address':street_address.strip(), 'city':cityname.strip(),
+                                     'zipcode':zipcode.strip(), 'state':state}
                     # print('Detecting Cityname:', addr_list[1])
-                    if addr_list[0][addr_list[0].isalnum()]:
-                        # print(addr_list[0])
-                        street_address = addr_singleton(street_address = addr_list[0].strip())
-                        addr_dict = {'street_address': street_address.street_address,
-                                     'city': cityname.cityname,
-                                     'state': statename.statename,
-                                     'zipcode': zipcode.zipcode}
-                        print(addr_dict)
+                    # if addr_list[0][addr_list[0].isalnum()]:
+                    #     # print(addr_list[0])
+                    #     street_address = addr_singleton(street_address = addr_list[0].strip())
+                    #     addr_dict = {'street_address': street_address.street_address,
+                    #                  'city': cityname.cityname,
+                    #                  'state': statename.statename,
+                    #                  'zipcode': zipcode.zipcode}
+                    #     print(addr_dict)
                         return addr_dict
 
 class addrpattern2():
