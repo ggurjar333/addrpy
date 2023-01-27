@@ -23,16 +23,6 @@ class addrpattern1():
             # print('Detecting Zipcode: ',addr_list[3])
             if check_state(state=addr_list[2]):
                 state = check_state(state=addr_list[2])
-            # if addr_list[2][addr_list[2].isalpha()]:
-            #     statename = addr_singleton(statename = addr_list[2].strip())
-
-                # if statename.statename != 'IL':
-                #     critical_log_object = Logger('parsing_logs.log')
-                #     critical_log_object.critical('CRITICAL', '[{0}] - Statename is not valid - [ {1} ]'.format(addrvalue, addr_list[2]))
-                # print('Detecting Statename:', addr_list[2])
-                # if addr_list[1][addr_list[1].isalpha()]:
-                #     cityname = addr_singleton(cityname = addr_list[1].strip())
-
                 if check_city(city_string=addr_list[1]):
                     cityname = check_city(city_string=addr_list[1])
                     print('from check city --> City: {}'.format(cityname))
@@ -41,15 +31,6 @@ class addrpattern1():
                         print('from check street address -->street address: {}'.format(street_address))
                         addr_dict = {'street_address':street_address.strip(), 'city':cityname.strip(),
                                      'zipcode':zipcode.strip(), 'state':state}
-                    # print('Detecting Cityname:', addr_list[1])
-                    # if addr_list[0][addr_list[0].isalnum()]:
-                    #     # print(addr_list[0])
-                    #     street_address = addr_singleton(street_address = addr_list[0].strip())
-                    #     addr_dict = {'street_address': street_address.street_address,
-                    #                  'city': cityname.cityname,
-                    #                  'state': statename.statename,
-                    #                  'zipcode': zipcode.zipcode}
-                    #     print(addr_dict)
                         return addr_dict
 
 class addrpattern2():
@@ -192,43 +173,3 @@ class addrpattern5():
                 print(state_zipcode_list)
         except:
             print('Please add more patterns and look into data analysis phase. '.format(addr_list))
-        # try:
-        #     addr_list[1] = addr_list[2].lstrip()
-        #     addr_list[1] = addr_list[2].rstrip()
-        #     state_zipcode = addr_list[1]
-        #     print(state_zipcode)
-        #     if state_zipcode.isnumeric():
-        #         print('Detecting zipcode as digit: ', state_zipcode)
-        #         print('City: {}'.format(addr_list[1]))
-        #         if check_city(city_string=addr_list[1]):
-        #             cityname = check_city(city_string=addr_list[1])
-        #             print('from check_city --> City: {}'.format(cityname))
-        #             if check_street_address(street_address=addr_list[0]):
-        #                 street_address = check_street_address(street_address=addr_list[0])
-        #                 print('from check_street_address --> street_address: {}'.format(street_address))
-        #                 addr_dict = {
-        #                     'street_address': street_address,
-        #                     'city': cityname,
-        #                     'zipcode': zipcode.strip(),
-        #                     'state': ''
-        #                     }
-        #                 print('Processed text: ',addr_dict)
-        #                 return addr_dict
-        # except:
-        #     print('Please add more patterns and look into data analysis phase. '.format(addr_list))
-
-        # if not addr_list[1].isalpha():
-        #     # print(addr_list[1])
-        #     if not addr_list[0].isalpha():
-        #         # print(addr_list[0])
-        #         city_zip = addr_list[1].split(' ')
-        #         # print(city_zip)
-        #         if city_zip[city_zip[2].isdigit()]:
-        #             if city_zip[city_zip[1].isalpha()]:
-        #                 if addr_list[0][addr_list[0].isalnum()]:
-        #                     addr_dict = {
-        #                         'street_address': addr_list[0].strip(),
-        #                         'city': city_zip[1].strip(),
-        #                         'zipcode': city_zip[2].strip()}
-        #                     print(addr_dict)
-        #                     return addr_dict
